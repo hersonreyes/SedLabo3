@@ -25,6 +25,16 @@ try {
 }
 });
 
+app.get("/read",async (req,res)=>{
+    MovieModel.find({},(err,result)=>{
+        if(err){
+            res.send(err);
+        }
+
+        res.send(result);
+    });
+    });
+
 app.listen(5000,()=>{
     console.log("Server running on port 5000")
 });

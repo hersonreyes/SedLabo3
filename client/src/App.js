@@ -29,6 +29,10 @@ function App() {
     });
   };
 
+  const deleteMovie = (id) =>{
+    Axios.delete(`http://localhost:5000/delete/${id}`)
+  };
+
   return (
     <div className="App">
       <h1>
@@ -55,7 +59,7 @@ function App() {
           }}
           />
            <button onClick={()=>updateMovie(val._id)}>Actualizar</button>
-           <button>Eliminar</button>
+           <button onClick={()=>deleteMovie(val._id)}>Eliminar</button>
            </div>
            );
        })}

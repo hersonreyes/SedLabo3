@@ -7,6 +7,8 @@ function App() {
 
   const [movieList,setMovieList]= useState([])
 
+  const [newMovieName,setNewMovieName] = useState('');
+
   useEffect(()=>{
     Axios.get('http://localhost:5000/read').then((response)=>{
       setMovieList(response.data);
@@ -17,6 +19,14 @@ function App() {
     Axios.post("http://localhost:5000/insert",
     {movieName: movieName,});
 
+  };
+
+  const updateMovie = (id) =>{
+    Axios.put("http://localhost:5000/update",
+    {
+      id:id,
+      newMovieName : newMovieName,
+    });
   };
 
   return (
@@ -38,6 +48,14 @@ function App() {
        {movieList.map((val,key) => {
          return (<div key={key}>
            <h2>{val.movieName}</h2>
+           <input type="text" 
+           placeholder="Nuevo nombre de Pelicula"
+           onChange={(event)=>{
+            setNewMovieName(event.target.value);
+          }}
+          />
+           <button onClick={()=>updateMovie(val._id)}>Actualizar</button>
+           <button>Eliminar</button>
            </div>
            );
        })}

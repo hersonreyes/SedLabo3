@@ -35,6 +35,24 @@ app.get("/read",async (req,res)=>{
     });
     });
 
+
+    app.put("/update",async (req,res)=>{
+        const newMovieName = req.body.newMovieName;
+        const id = req.body.id; 
+        try {
+            await MovieModel.findById(id,(err, updatedMovie)=>{
+                updatedMovie.movieName = newMovieName
+                updatedMovie.save();
+                res.send("update");
+
+            });
+        } catch(err){   
+            console.log(err);
+        }
+        });
+
+        
+
 app.listen(5000,()=>{
     console.log("Server running on port 5000")
 });

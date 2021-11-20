@@ -6,7 +6,7 @@ const MovieModel = require("./models/Movies");
 app.use(express.json());
 
 
-mongoose.connect("mongodb://localhost/movies",
+mongoose.connect("mongodb+srv://Merson:mer123@sed.pnwcz.mongodb.net/myFirstDatabase?retryWrites=true&w=majority",
 {
     useNewUrlParser: true,
 });
@@ -15,7 +15,8 @@ app.get("/",async (req,res)=>{
 const movie = new MovieModel({movieName: "Terminator"});
 
 try {
-    await movie.save(); 
+    await movie.save();
+    res.send(" inserted data"); 
 } catch(err){   
     console.log(err);
 }

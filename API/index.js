@@ -19,7 +19,7 @@ const movie = new MovieModel({movieName: movieName});
 
 try {
     await movie.save();
-    res.send(" inserted data"); 
+    res.send(" inserted data");
 } catch(err){   
     console.log(err);
 }

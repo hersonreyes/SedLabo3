@@ -18,7 +18,7 @@ function App() {
   const addToList = () => {
     Axios.post("http://localhost:5000/insert",
     {movieName: movieName,});
-
+    window.location.reload(); 
   };
 
   const updateMovie = (id) =>{
@@ -31,6 +31,7 @@ function App() {
 
   const deleteMovie = (id) =>{
     Axios.delete(`http://localhost:5000/delete/${id}`)
+    window.location.reload();
   };
 
   return (
